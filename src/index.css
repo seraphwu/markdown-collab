@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ✅ 在這裡統一引入 Milkdown 的主題樣式 */
-@import '@milkdown/theme-nord/style.css';
-
-/* 確保整個畫面撐滿，背景給個清爽的淺灰色 */
 body {
   @apply bg-gray-50 text-gray-800 m-0 p-0 h-screen;
 }
