@@ -5,3 +5,26 @@
 body {
   @apply bg-gray-50 text-gray-800 m-0 p-0 h-screen;
 }
+
+/* 修正 Tailwind CSS reset 導致 Milkdown 表格無法顯示的問題 */
+.ProseMirror table {
+  display: table !important;
+}
+.ProseMirror tr {
+  display: table-row !important;
+}
+.ProseMirror th,
+.ProseMirror td {
+  display: table-cell !important;
+  border: 1px solid #d1d5db;
+  padding: 6px 12px;
+  vertical-align: top;
+}
+.ProseMirror thead tr {
+  background-color: #f9fafb;
+  font-weight: 600;
+}
+.ProseMirror .tableWrapper {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
