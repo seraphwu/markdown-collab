@@ -17,7 +17,7 @@ import { tooltipFactory } from '@milkdown/plugin-tooltip';
 import * as Y from 'yjs';
 import { WebsocketProvider } from 'y-websocket';
 import type { User } from '@supabase/supabase-js';
-import { supabase } from '../supabaseClient';
+
 
 export const MilkdownEditor = ({ user }: { user: User }) => {
     const [saving, setSaving] = useState(false);
@@ -66,7 +66,7 @@ export const MilkdownEditor = ({ user }: { user: User }) => {
             });
         };
 
-        return () => {};
+        return () => { };
     }, [get, loading]);
 
     // Yjs 協作連線
