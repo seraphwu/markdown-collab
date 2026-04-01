@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "y-server": "node ws-server.mjs"
+    "y-server": "node ws-server.mjs",
+    "start": "node ws-server.mjs"
   },
   "dependencies": {
     "@milkdown/core": "^7.20.0",

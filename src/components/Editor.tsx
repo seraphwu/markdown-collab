@@ -81,7 +81,14 @@ export const MilkdownEditor = ({ user }: { user: User }) => {
             const roomName = urlParams.get('room') || 'lin-chan-collab-2026';
             console.log(`🏠 正在嘗試加入房間：${roomName}`);
 
-            const provider = new WebsocketProvider('ws://localhost:1234', roomName, doc);
+            // 從環境變數取得 WebSocket 網址，預設為本地端
+            const wsUrl = import.meta.env.VITE_WS_URL || 'ws://localhost:1234';
+            const provider = new WebsocketProvider(
+                wsUrl,
+                roomName,
+                doc,
+                { connect: true }
+            );
             collabReady.current = { doc, provider };
         }
 
@@ -165,8 +172,9 @@ export const MilkdownEditor = ({ user }: { user: User }) => {
             const urlParams = new URLSearchParams(window.location.search);
             const roomName = urlParams.get('room') || 'lin-chan-collab-2026';
             const path = `workspaces/${roomName}.md`;
-            // 呼叫本地 ws-server.mjs 的 /github-sync 代理端點
-            const res = await fetch('http://localhost:1234/github-sync', {
+            // 從環境變數取得 GitHub Sync API 網址，預設為本地端代理
+            const syncApiUrl = import.meta.env.VITE_SYNC_API_URL || 'http://localhost:1234/github-sync';
+            const res = await fetch(syncApiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ markdown, path, username: user.user_metadata.user_name })

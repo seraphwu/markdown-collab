@@ -12,17 +12,19 @@ import * as encoding from 'lib0/encoding'
 import * as decoding from 'lib0/decoding'
 import * as map from 'lib0/map'
 
-const PORT = 1234
+const PORT = process.env.PORT || 1234
 const docs = new Map()
 
-// 讀取 .env 檔案中的 GITHUB_PAT
-const envPath = path.resolve(process.cwd(), '.env')
-let GITHUB_PAT = ''
-try {
-    const envContent = fs.readFileSync(envPath, 'utf-8')
-    const match = envContent.match(/^GITHUB_PAT=(.+)$/m)
-    if (match) GITHUB_PAT = match[1].trim()
-} catch (_) {}
+// 讀取環境變數中的 GITHUB_PAT (優先使用雲端環境的變數，若無則讀取本地 .env)
+let GITHUB_PAT = process.env.GITHUB_PAT || ''
+if (!GITHUB_PAT) {
+  const envPath = path.resolve(process.cwd(), '.env')
+  try {
+      const envContent = fs.readFileSync(envPath, 'utf-8')
+      const match = envContent.match(/^GITHUB_PAT=(.+)$/m)
+      if (match) GITHUB_PAT = match[1].trim()
+  } catch (_) {}
+}
 
 const messageSync = 0
 const messageAwareness = 1

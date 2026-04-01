@@ -38,6 +38,12 @@
   - [x] 更新 `package.json` 的 `y-server` script 指向 `node ws-server.mjs`
   - [x] 修正 React Strict Mode 造成 `Y.Doc` 被反覆銷毀的問題（改用 `useRef` 快取）
 
+- [x] **第七階段：部署準備與環境切換 (Deployment Prep)**
+  - [x] 修改後端伺服器 (ws-server.mjs) 支援 `process.env.PORT` 與雲端環境變數
+  - [x] 替換前端 (Editor.tsx) 硬編碼之連線網址為 `import.meta.env`
+  - [x] 於 `.env` 設定預設連線變數
+  - [x] 於 `package.json` 新增 `"start"` 指令支援雲端自動啟動
+
 ## 📋 環境需求
 
 - `.env` 需包含：
