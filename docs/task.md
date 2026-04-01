@@ -44,6 +44,10 @@
   - [x] 於 `.env` 設定預設連線變數
   - [x] 於 `package.json` 新增 `"start"` 指令支援雲端自動啟動
 
+- [x] **文件維護階段**
+  - [x] 解耦並更新 `GEMINI.md` 的雲端部署指南
+  - [x] 於 `requirements.md` 新增 TOC 索引目錄
+
 ## 📋 環境需求
 
 - `.env` 需包含：
