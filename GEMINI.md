@@ -81,6 +81,23 @@ GITHUB_PAT=ghp_您的Token（ws-server.mjs 讀取，用於呼叫 GitHub API）
 
 ---
 
+## 🚀 雲端部署指南 (Production Deployment)
+
+本系統已解耦本地依賴，支援完全雲端部署（ Frontend 取代 localhost ）：
+
+1. **後端代理 (Render / Railway)**：
+   - 原理：平台會自動執行 `package.json` 中的 `"start"` 指令 (`node ws-server.mjs`)，且程式碼已支援動態 `process.env.PORT`。
+   - 設定：需在雲端平台的 Environment Variables 注入 `GITHUB_PAT`。
+   - 獲得：一組 WebSocket 連線用網址 (`wss://...`) 與一組 HTTP API 網址 (`https://.../github-sync`)。
+
+2. **前端介面 (Vercel / Netlify)**：
+   - 設定：在平台的 Environment Variables 內，除了填寫 Supabase 雙金鑰外，需額外補上：
+     - `VITE_WS_URL` = (上述取得的 wss 網址)
+     - `VITE_SYNC_API_URL` = (上述取得的 https 網址)
+   - 授權：部署成功後，**務必**至 Supabase 後台的 `Authentication -> URL Configuration` 將新的 Vercel 網域加入白名單，否則 GitHub OAuth 會拒絕登入。
+
+---
+
 ## 📝 待辦 / 可延伸功能
 
 - [ ] **正式部署**：將 `GITHUB_PAT` 設為 Supabase Secret，部署 `github-sync` Edge Function，讓學生透過公開網址使用
