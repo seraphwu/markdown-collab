@@ -88,6 +88,7 @@ GITHUB_PAT=ghp_您的Token（ws-server.mjs 讀取，用於呼叫 GitHub API）
 1. **後端代理 (Render / Railway)**：
    - 原理：平台會自動執行 `package.json` 中的 `"start"` 指令 (`node ws-server.mjs`)，且程式碼已支援動態 `process.env.PORT`。
    - 設定：需在雲端平台的 Environment Variables 注入 `GITHUB_PAT`。
+     - ⚠️ **易錯提醒**：在 Render 填寫環境變數時，Value 欄位請「直接貼上 `ghp_...` 開頭的金鑰字串」即可，**千萬不要**連同 `GITHUB_PAT=` 一起貼進去，否則會出現 `Bad credentials` 無效存取的錯誤！
    - 獲得：一組 WebSocket 連線用網址 (`wss://...`) 與一組 HTTP API 網址 (`https://.../github-sync`)。
 
 2. **前端介面 (Vercel / Netlify)**：

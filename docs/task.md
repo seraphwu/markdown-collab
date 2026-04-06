@@ -2,3 +2,4 @@
 - [x] 撰寫教學分組與 URL 使用手冊 (`docs/url-routing-manual.md`)
 - [x] 更新 `README.md`，加上專案說明與手冊連結
 - [x] 複製協作紀錄（task.md, walkthrough.md）至 `docs/` 並進行 commit/push
+- [x] 將 Render 的 Bad credentials 易錯設定（把變數名稱一起貼進去）寫入 `GEMINI.md` 提醒
